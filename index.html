@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aunty Momo — Fresh Momos, Lajpat Nagar, New Delhi</title>
+  <meta name="description" content="Aunty Momo — The best momos in Lajpat Nagar. Fresh steamed, fried & tandoori momos at Amar Colony, New Delhi. Call +91 85277 88210." />
+  <meta property="og:title" content="Aunty Momo" />
+  <meta property="og:description" content="Fresh momos, big flavours, good vibes. Amar Colony, Lajpat Nagar, New Delhi." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Nunito:wght@400;600;700;900&family=Patrick+Hand&display=swap" rel="stylesheet" />
+<style>
+/* ══════════════════════════════════════════
+   AUNTY MOMO
+   Himalayan Street Stall · Warm & Playful
+   Teal + Coral + Cream + Forest Green
+   Fonts: Righteous (display) · Nunito (body) · Patrick Hand (accent)
+   ══════════════════════════════════════════ */
+
+:root {
+  --teal:     #1a6b6b;
+  --teal-d:   #0f4444;
+  --teal-l:   #2a8a8a;
+  --coral:    #e8452a;
+  --coral-l:  #ff6b4a;
+  --coral-d:  #b83018;
+  --cream:    #fdf6e8;
+  --cream-d:  #f0e4c8;
+  --forest:   #2d5a27;
+  --yellow:   #f5c842;
+  --brown:    #3a1a08;
+  --gray:     #7a8a7a;
+  --white:    #ffffff;
+  --ease:     cubic-bezier(.23,1,.32,1);
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  background: var(--cream);
+  color: var(--brown);
+  font-family: 'Nunito', 'Segoe UI', system-ui, sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+a   { color:inherit; text-decoration:none; }
+ul  { list-style:none; }
+
+::selection         { background:var(--coral); color:#fff; }
+::-webkit-scrollbar { width:5px; }
+::-webkit-scrollbar-thumb { background:var(--teal); border-radius:5px; }
+
+/* Subtle dot texture */
+body::before {
+  content:''; position:fixed; inset:0; z-index:0;
+  pointer-events:none; opacity:.04;
+  background-image: radial-gradient(circle, var(--teal) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ══ KEYFRAMES ══ */
+@keyframes fadeUp   { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn   { from{opacity:0} to{opacity:1} }
+@keyframes steam    { 0%,100%{opacity:.5;transform:translateY(0) scaleX(1)} 50%{opacity:0;transform:translateY(-14px) scaleX(1.3)} }
+@keyframes wobble   { 0%,100%{transform:rotate(-2deg)} 50%{transform:rotate(2deg)} }
+@keyframes floatY   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@keyframes spinSlow { to{transform:rotate(360deg)} }
+@keyframes ticker   { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+@keyframes bounce   { 0%,100%{transform:translateY(0)} 40%{transform:translateY(-6px)} }
+@keyframes waPulse  {
+  0%,100%{box-shadow:0 6px 24px rgba(37,211,102,.28),0 0 0 0 rgba(37,211,102,.22)}
+  60%    {box-shadow:0 6px 24px rgba(37,211,102,.28),0 0 0 14px rgba(37,211,102,0)}
+}
+@keyframes dotPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.6)} }
+@keyframes wiggle   { 0%,100%{transform:rotate(0)} 25%{transform:rotate(-4deg)} 75%{transform:rotate(4deg)} }
+
+/* SVG helpers */
+.steam-path { animation:steam 2.4s ease-in-out infinite; }
+.float      { animation:floatY 3.8s ease-in-out infinite; }
+.spin-slow  { animation:spinSlow 22s linear infinite; }
+.wobble-it  { animation:wobble 4s ease-in-out infinite; }
+.bounce-it  { animation:bounce 2s ease-in-out infinite; }
+
+/* ── Reveal ── */
+.reveal { animation: fadeUp .85s var(--ease) both; }
+
+/* ══ NAV ══ */
+.nav {
+  position:fixed; top:0; left:0; right:0; z-index:1000;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:1.2rem 5vw;
+  border-bottom:1px solid transparent;
+  transition:background .35s, padding .35s, border-color .35s;
+}
+.nav.stuck {
+  background:rgba(253,246,232,.97);
+  backdrop-filter:blur(18px);
+  padding:.8rem 5vw;
+  border-bottom:2px solid var(--teal);
+  box-shadow:0 2px 20px rgba(26,107,107,.1);
+}
+.nav-logo {
+  font-family:'Righteous','Impact',sans-serif;
+  font-size:1.55rem; letter-spacing:.04em; color:var(--teal);
+  display:flex; align-items:center; gap:.5rem; cursor:pointer;
+}
+.nav-logo svg { flex-shrink:0; }
+.nav-links { display:flex; gap:2rem; }
+.nav-links a {
+  font-family:'Patrick Hand','Courier New',monospace;
+  font-size:.95rem; letter-spacing:.04em; color:var(--teal-d);
+  transition:color .2s; position:relative;
+}
+.nav-links a::after {
+  content:''; position:absolute; bottom:-3px; left:0; right:0;
+  height:2px; background:var(--coral); border-radius:2px;
+  transform:scaleX(0); transition:transform .25s;
+}
+.nav-links a:hover { color:var(--coral); }
+.nav-links a:hover::after { transform:scaleX(1); }
+
+.ham { display:none; flex-direction:column; gap:5px; padding:4px; background:none; border:none; cursor:pointer; }
+.ham span { display:block; width:22px; height:2px; background:var(--teal-d); border-radius:2px; transition:transform .3s,opacity .3s; }
+.ham.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.ham.open span:nth-child(2) { opacity:0; }
+.ham.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+.mob-menu {
+  position:fixed; inset:0; z-index:999;
+  background:var(--teal-d);
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transition:opacity .35s;
+}
+.mob-menu.open { opacity:1; pointer-events:all; }
+.mob-menu ul { text-align:center; }
+.mob-menu li { margin:1.2rem 0; }
+.mob-menu a {
+  font-family:'Righteous','Impact',sans-serif;
+  font-size:3rem; letter-spacing:.06em; color:var(--cream);
+  transition:color .2s;
+}
+.mob-menu a:hover { color:var(--yellow); }
+
+/* ══ BUTTONS ══ */
+.btn {
+  display:inline-flex; align-items:center; gap:.65rem;
+  padding:.88rem 1.8rem;
+  font-family:'Patrick Hand','Courier New',monospace;
+  font-size:.98rem; letter-spacing:.04em;
+  border:none; cursor:pointer; border-radius:50px;
+  transition:transform .3s var(--ease), box-shadow .3s, filter .3s;
+  white-space:nowrap; font-weight:700;
+}
+.btn:hover { transform:translateY(-3px) scale(1.02); }
+.btn-ico { width:20px; height:20px; fill:#fff; flex-shrink:0; }
+.btn-ico--teal { fill:var(--teal); }
+.btn-ico--dark { fill:var(--brown); }
+
+.btn-wa    { background:linear-gradient(135deg,#25D366,#128C7E); color:#fff; box-shadow:0 6px 20px rgba(37,211,102,.28); animation:waPulse 2.8s ease-in-out infinite; }
+.btn-wa:hover { animation:none; filter:brightness(1.08); }
+.btn-coral { background:linear-gradient(135deg,var(--coral),var(--coral-d)); color:#fff; box-shadow:0 6px 20px rgba(232,69,42,.3); }
+.btn-coral:hover { box-shadow:0 14px 36px rgba(232,69,42,.45); filter:brightness(1.08); }
+.btn-teal  { background:linear-gradient(135deg,var(--teal),var(--teal-d)); color:#fff; box-shadow:0 6px 20px rgba(26,107,107,.28); }
+.btn-teal:hover { box-shadow:0 14px 36px rgba(26,107,107,.4); }
+.btn-outline { background:transparent; border:2px solid var(--teal); color:var(--teal); }
+.btn-outline:hover { background:var(--teal); color:#fff; }
+.btn-outline-w { background:transparent; border:2px solid rgba(255,255,255,.5); color:var(--brown); }
+.btn-outline-w:hover { background:rgba(255,255,255,.2); }
+.btn-fab { padding:.72rem 1.4rem; font-size:.88rem; border-radius:100px; }
+
+/* ══ HERO ══ */
+.hero {
+  position:relative; z-index:1; min-height:100vh;
+  display:grid; grid-template-columns:1fr 1fr;
+  align-items:center; gap:2rem;
+  padding:8rem 5vw 5rem; max-width:1400px; margin:0 auto;
+}
+
+/* Wavy blobs background */
+.hero::before {
+  content:''; position:absolute; z-index:-1;
+  width:600px; height:600px;
+  background:radial-gradient(circle, rgba(26,107,107,.12) 0%, transparent 70%);
+  top:-80px; right:-100px; border-radius:50%;
+  pointer-events:none;
+}
+
+.hero-tag {
+  display:inline-flex; align-items:center; gap:.55rem;
+  background:var(--teal); color:var(--cream);
+  font-family:'Patrick Hand','Courier New',monospace;
+  font-size:.88rem; letter-spacing:.06em;
+  padding:.4rem 1.1rem; border-radius:50px; margin-bottom:1.6rem;
+  animation:fadeUp .7s .08s both;
+}
+.tag-dot { width:8px; height:8px; border-radius:50%; background:var(--yellow); display:inline-block; flex-shrink:0; animation:dotPulse 1.8s infinite; }
+
+.hero-title {
+  font-family:'Righteous','Impact',sans-serif;
+  font-size:clamp(3.5rem,9vw,9.5rem);
+  line-height:.9; letter-spacing:.02em;
+  color:var(--teal-d); margin-bottom:.6rem;
+  animation:fadeUp .9s .2s both;
+}
+.hero-title .coral { color:var(--coral); }
+.hero-title .teal  { color:var(--teal); }
+
+.hero-tagline {
+  font-family:'Patrick Hand','Courier New',monospace;
+  font-size:clamp(1rem,1.8vw,1.35rem); color:var(--teal);
+  margin-bottom:1.1rem; letter-spacing:.02em;
+  animation:fadeUp .9s .3s both;
+}
+
+.hero-sub {
+  font-size:clamp(.95rem,1.3vw,1.05rem); color:var(--gray);
+  max-width:420px; line-height:1.85; margin-bottom:2.4rem;
+  animation:fadeUp .9s .38s both;
+}
+.hero-btns  { display:flex; gap:.9rem; flex-wrap:wrap; animation:fadeUp .9s .52s both; }
+.hero-stats {
+  display:flex; gap:2.5rem; margin-top:3rem; padding-top:2rem;
+  border-top:2px dashed rgba(26,107,107,.2);
+  animation:fadeUp .9s .66s both;
+}
+.stat-n { font-family:'Righteous',sans-serif; font-size:2.5rem; line-height:1; color:var(--coral); }
+.stat-l { font-family:'Patrick Hand',monospace; font-size:.82rem; letter-spacing:.05em; color:var(--gray); margin-top:.15rem; }
+
+.hero-right { display:flex; align-items:center; justify-content:center; animation:fadeIn 1.1s .45s both; }
+.hero-svg   { width:min(480px,46vw); filter:drop-shadow(0 20px 60px rgba(26,107,107,.15)); }
+
+/* ══ TICKER ══ */
+.ticker-wrap  {
+  overflow:hidden; background:var(--coral);
+  padding:.85rem 0;
+  border-top:3px solid var(--coral-d);
+  border-bottom:3px solid var(--coral-d);
+  position:relative; z-index:1;
+}
+.ticker-track { display:flex; width:max-content; animation:ticker 24s linear infinite; }
+.ticker-wrap:hover .ticker-track { animation-play-state:paused; }
+.ticker-track span {
+  font-family:'Righteous',sans-serif; font-size:.92rem; letter-spacing:.12em; text-transform:uppercase;
+  color:#fff; white-space:nowrap; padding:0 1.3rem;
+}
+.ticker-track .sep { opacity:.5; font-size:.65rem; }
+
+/* ══ SECTION SHARED ══ */
+.sec-label {
+  display:inline-block; font-family:'Patrick Hand',monospace;
+  font-size:.92rem; letter-spacing:.08em;
+  color:var(--coral); margin-bottom:.4rem;
+}
+.sec-title {
+  font-family:'Righteous',sans-serif; font-weight:400;
+  font-size:clamp(2.2rem,5vw,5rem); letter-spacing:.03em; line-height:.95;
+  color:var(--teal-d); margin-bottom:1rem;
+}
+.sec-title em { font-style:normal; color:var(--coral); }
+.sec-sub { color:var(--gray); max-width:460px; margin-bottom:3rem; line-height:1.75; font-size:1rem; }
+
+/* ══ MENU ══ */
+.menu-sec {
+  padding:7rem 5vw 5rem; max-width:1400px; margin:0 auto;
+  position:relative; z-index:1;
+}
+/* Wavy blob decoration */
+.menu-sec::before {
+  content:''; position:absolute; z-index:-1;
+  width:500px; height:500px;
+  background:radial-gradient(circle, rgba(232,69,42,.06) 0%, transparent 70%);
+  bottom:-50px; left:-80px; border-radius:50%;
+  pointer-events:none;
+}
+.menu-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:1.4rem; }
+
+.mcard {
+  background:#fff;
+  border:2px solid rgba(26,107,107,.1);
+  border-radius:20px; overflow:hidden;
+  transition:transform .38s var(--ease), border-color .38s, box-shadow .38s;
+  box-shadow:0 4px 20px rgba(26,107,107,.06);
+}
+.mcard:hover {
+  transform:translateY(-8px) rotate(.5deg);
+  border-color:var(--coral);
+  box-shadow:0 20px 50px rgba(232,69,42,.15), 0 0 0 1px rgba(232,69,42,.1);
+}
+.mcard-art   { height:185px; position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.card-svg    { position:absolute; inset:0; width:100%; height:100%; }
+.card-emoji  { font-size:4rem; position:relative; z-index:1; filter:drop-shadow(0 4px 16px rgba(0,0,0,.2)); }
+.mcard-body  { padding:1.2rem 1.4rem 1.5rem; }
+.mcard-name  { font-family:'Righteous',sans-serif; font-size:1.15rem; letter-spacing:.04em; color:var(--teal-d); margin-bottom:.3rem; }
+.mcard-desc  { font-size:.88rem; color:var(--gray); line-height:1.65; }
+.mcard-footer{ display:flex; align-items:center; justify-content:space-between; margin-top:1rem; }
+.mcard-price { font-family:'Righteous',sans-serif; font-size:1.55rem; color:var(--coral); }
+.mcard-price::before { content:'₹'; font-size:.68em; margin-right:.05em; opacity:.7; }
+.mcard-tag {
+  font-family:'Patrick Hand',monospace; font-size:.72rem; font-weight:700;
+  padding:.24rem .75rem; border-radius:50px; letter-spacing:.06em;
+}
+.tag-hit  { background:rgba(232,69,42,.1); color:var(--coral);  border:1px solid rgba(232,69,42,.25); }
+.tag-veg  { background:rgba(45,90,39,.1);  color:var(--forest); border:1px solid rgba(45,90,39,.25); }
+.tag-new  { background:rgba(245,200,66,.15); color:#b8880a;     border:1px solid rgba(245,200,66,.4); }
+.tag-spicy{ background:rgba(232,69,42,.12); color:var(--coral-d); border:1px solid rgba(232,69,42,.3); }
+
+/* ══ DIVIDER ══ */
+.wave-divider {
+  display:flex; align-items:center; gap:1rem;
+  padding:2rem 5vw; max-width:1400px; margin:0 auto;
+  font-family:'Patrick Hand',monospace; font-size:.88rem;
+  letter-spacing:.06em; color:var(--teal); justify-content:center;
+}
+.wave-divider .dline { flex:1; max-width:160px; height:2px; border-radius:2px; background:linear-gradient(to right,transparent,rgba(26,107,107,.25)); }
+.wave-divider .dline.r { background:linear-gradient(to left,transparent,rgba(26,107,107,.25)); }
+
+/* ══ ABOUT ══ */
+.about-sec {
+  background:var(--teal-d);
+  padding:7rem 5vw; overflow:hidden;
+  position:relative;
+}
+.about-sec::before {
+  content:''; position:absolute; inset:0; pointer-events:none; opacity:.04;
+  background-image: radial-gradient(circle, var(--cream) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.about-bg-text {
+  position:absolute; right:-2vw; top:50%; transform:translateY(-50%);
+  font-family:'Righteous',sans-serif;
+  font-size:clamp(6rem,18vw,20rem);
+  color:rgba(253,246,232,.03);
+  pointer-events:none; white-space:nowrap; line-height:1; user-select:none;
+}
+.about-inner {
+  max-width:1400px; margin:0 auto;
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:6rem; align-items:center; position:relative; z-index:1;
+}
+.about-num  { font-family:'Righteous',sans-serif; font-size:clamp(4.5rem,12vw,12rem); color:var(--yellow); line-height:.85; margin-bottom:.8rem; letter-spacing:.02em; }
+.about-label{ font-family:'Patrick Hand',monospace; font-size:.88rem; letter-spacing:.08em; color:rgba(253,246,232,.4); margin-bottom:2rem; }
+.steamer-art{ width:100%; max-width:300px; display:block; }
+.about-text { font-size:1.02rem; color:rgba(253,246,232,.85); line-height:1.9; margin-bottom:1.8rem; }
+.pills      { display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:2.4rem; }
+.pill       {
+  font-family:'Patrick Hand',monospace; font-size:.82rem; letter-spacing:.04em;
+  padding:.38rem 1rem; border-radius:50px;
+  border:1.5px solid rgba(253,246,232,.25); color:var(--cream-d);
+  background:rgba(253,246,232,.07);
+  transition:background .2s, border-color .2s;
+}
+.pill:hover { background:rgba(253,246,232,.14); border-color:rgba(253,246,232,.4); }
+.about-btns { display:flex; gap:.9rem; flex-wrap:wrap; }
+
+/* ══ CTA ══ */
+.cta-sec {
+  background:var(--yellow);
+  padding:6.5rem 5vw; text-align:center;
+  position:relative; overflow:hidden;
+}
+.cta-sec::before {
+  content:''; position:absolute; inset:0; pointer-events:none; opacity:.06;
+  background-image: radial-gradient(circle, var(--brown) 1.5px, transparent 1.5px);
+  background-size: 26px 26px;
+}
+.cta-inner { position:relative; z-index:1; max-width:720px; margin:0 auto; }
+.cta-title {
+  font-family:'Righteous',sans-serif;
+  font-size:clamp(2.8rem,7vw,7.5rem); letter-spacing:.04em; line-height:.88;
+  color:var(--brown); margin-bottom:.8rem;
+}
+.cta-sub   { color:rgba(58,26,8,.6); margin-bottom:2.8rem; font-size:1.12rem; font-family:'Patrick Hand',monospace; letter-spacing:.04em; }
+.cta-btns  { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+
+/* ══ FOOTER ══ */
+.footer { background:var(--teal-d); padding:3.5rem 5vw 1.5rem; border-top:3px solid var(--teal); }
+.foot-inner { max-width:1400px; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:2.5rem; margin-bottom:2.5rem; }
+.foot-logo    { font-family:'Righteous',sans-serif; font-size:1.8rem; color:var(--yellow); margin-bottom:.4rem; }
+.foot-tagline { font-size:.95rem; color:rgba(253,246,232,.5); max-width:240px; line-height:1.8; font-family:'Patrick Hand',monospace; }
+.foot-cols    { display:flex; gap:3rem; flex-wrap:wrap; }
+.foot-col     { display:flex; flex-direction:column; gap:.45rem; }
+.foot-col h4  { font-family:'Patrick Hand',monospace; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:rgba(253,246,232,.28); margin-bottom:.4rem; }
+.foot-col a,
+.foot-col p   { font-size:.9rem; color:rgba(253,246,232,.55); transition:color .2s; font-family:'Nunito',sans-serif; }
+.foot-col a:hover { color:var(--yellow); }
+.foot-hours   { font-size:.82rem; color:rgba(253,246,232,.25) !important; }
+.foot-bottom  {
+  max-width:1400px; margin:0 auto; display:flex; justify-content:space-between;
+  padding-top:1.5rem; border-top:1px solid rgba(253,246,232,.08);
+  font-family:'Patrick Hand',monospace; font-size:.75rem; color:rgba(253,246,232,.22);
+  flex-wrap:wrap; gap:.5rem;
+}
+
+/* ══ FAB ══ */
+.fab {
+  display:none; position:fixed; bottom:1.4rem; left:50%; transform:translateX(-50%);
+  z-index:997; gap:.7rem; padding:.6rem .9rem;
+  background:rgba(15,68,68,.96); backdrop-filter:blur(20px);
+  border-radius:100px; box-shadow:0 8px 36px rgba(0,0,0,.3);
+  border:2px solid rgba(253,246,232,.12);
+}
+
+/* ══ RESPONSIVE ══ */
+@media (max-width:900px) {
+  .hero        { grid-template-columns:1fr; text-align:center; }
+  .hero-sub    { margin:0 auto 2.4rem; }
+  .hero-btns   { justify-content:center; }
+  .hero-stats  { justify-content:center; }
+  .hero-right  { display:none; }
+  .about-inner { grid-template-columns:1fr; gap:3rem; }
+}
+@media (max-width:768px) {
+  .nav-links { display:none; }
+  .ham       { display:flex; }
+  .fab       { display:flex; }
+  .cta-sec   { padding-bottom:7rem; }
+}
+@media (max-width:600px) {
+  .foot-inner  { flex-direction:column; }
+  .foot-cols   { flex-direction:column; gap:1.5rem; }
+  .foot-bottom { flex-direction:column; text-align:center; }
+}
+@media (max-width:480px) {
+  .hero-btns { flex-direction:column; align-items:stretch; }
+  .btn       { justify-content:center; }
+  .hero-stats { flex-wrap:wrap; gap:1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="nav">
+  <div class="nav-logo">
+    <svg width="30" height="30" viewBox="0 0 34 34" fill="none">
+      <!-- Steamer basket icon -->
+      <ellipse cx="17" cy="22" rx="14" ry="7" fill="none" stroke="#1a6b6b" stroke-width="2"/>
+      <path d="M4 18 Q17 13 30 18" stroke="#1a6b6b" stroke-width="2" fill="none"/>
+      <path d="M4 22 Q4 29 17 29 Q30 29 30 22" fill="rgba(26,107,107,.15)" stroke="#1a6b6b" stroke-width="1.5"/>
+      <path d="M11 11 Q11 6 14 6 Q14 9 17 9 Q20 9 20 6 Q23 6 23 11" stroke="#1a6b6b" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <circle cx="17" cy="22" r="3" fill="#e8452a" opacity=".7"/>
+    </svg>
+    Aunty Momo
+  </div>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="ham" id="ham" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mob-menu" id="mob-menu">
+  <ul>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="hero">
+  <div class="hero-left">
+    <div class="hero-tag"><span class="tag-dot"></span>Opens 11 AM · Amar Colony, Lajpat Nagar</div>
+    <h1 class="hero-title">
+      <span class="coral">AUNTY</span><br/>
+      <span class="teal">MOMO</span>
+    </h1>
+    <p class="hero-tagline">🥟 Fresh Momos, Big Love, No Drama</p>
+    <p class="hero-sub">Handcrafted momos steamed fresh every single day. 12 fillings, 4 styles, one legendary chutney. Come hungry, leave happy.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/918527788210?text=Hi%20Aunty!%20I%20would%20like%20to%20place%20a%20momo%20order%20please%20%F0%9F%A5%9F" target="_blank" rel="noopener" class="btn btn-wa">
+        <svg class="btn-ico" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Order on WhatsApp
+      </a>
+      <a href="tel:+918527788210" class="btn btn-coral">
+        <svg class="btn-ico" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        Call Now
+      </a>
+      <a href="#menu" class="btn btn-outline">See Menu ↓</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-n">12+</div><div class="stat-l">Fillings</div></div>
+      <div class="stat"><div class="stat-n">4.8★</div><div class="stat-l">Rating</div></div>
+      <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Handmade</div></div>
+    </div>
+  </div>
+
+  <!-- Hero SVG: Bamboo Steamer Tower -->
+  <div class="hero-right">
+    <svg class="hero-svg" viewBox="0 0 500 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="bg1" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#1a6b6b" stop-opacity=".14"/><stop offset="100%" stop-color="#1a6b6b" stop-opacity="0"/></radialGradient>
+        <radialGradient id="bg2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#e8452a" stop-opacity=".1"/><stop offset="100%" stop-color="#e8452a" stop-opacity="0"/></radialGradient>
+        <radialGradient id="steamGrad" cx="50%" cy="20%" r="55%"><stop offset="0%" stop-color="#d4a060"/><stop offset="100%" stop-color="#8a5820"/></radialGradient>
+        <filter id="glow1"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="glow2"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <clipPath id="heroClip"><circle cx="250" cy="280" r="215"/></clipPath>
+      </defs>
+
+      <!-- Background circles -->
+      <circle cx="250" cy="280" r="215" fill="url(#bg1)"/>
+      <circle cx="280" cy="300" r="170" fill="url(#bg2)"/>
+
+      <!-- Dot pattern inside clip -->
+      <g clip-path="url(#heroClip)" opacity=".055">
+        <pattern id="dots" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+          <circle cx="14" cy="14" r="2" fill="#1a6b6b"/>
+        </pattern>
+        <rect x="35" y="65" width="430" height="430" fill="url(#dots)"/>
+      </g>
+
+      <!-- Orbit rings -->
+      <circle class="spin-slow" cx="250" cy="280" r="212" stroke="#1a6b6b" stroke-width="1.2" stroke-dasharray="10 20" opacity=".16" style="transform-origin:250px 280px"/>
+      <circle cx="250" cy="280" r="170" stroke="#e8452a" stroke-width="1" stroke-dasharray="5 13" opacity=".14" style="transform-origin:250px 280px; animation:spinSlow 14s linear infinite reverse"/>
+
+      <!-- ══ STEAMER BASKET TOP (lid) ══ -->
+      <!-- Lid dome -->
+      <ellipse cx="250" cy="165" rx="128" ry="28" fill="#5a3010" stroke="#8a5820" stroke-width="2"/>
+      <path d="M122 165 Q122 130 250 118 Q378 130 378 165" fill="url(#steamGrad)" stroke="#8a5820" stroke-width="2"/>
+      <ellipse cx="250" cy="165" rx="118" ry="22" fill="#c49040" opacity=".5"/>
+      <!-- Lid handle -->
+      <ellipse cx="250" cy="118" rx="22" ry="8" fill="#8a5820" stroke="#c49040" stroke-width="1.5"/>
+      <ellipse cx="250" cy="115" rx="16" ry="6" fill="#a06828" opacity=".8"/>
+      <!-- Lid weave lines -->
+      <g stroke="#6a3808" stroke-width="1.2" opacity=".5">
+        <path d="M135 148 Q250 140 365 148"/>
+        <path d="M128 155 Q250 147 372 155"/>
+        <path d="M125 162 Q250 154 375 162"/>
+      </g>
+      <!-- Lid vertical ribs -->
+      <g stroke="#6a3808" stroke-width=".9" opacity=".4">
+        <path d="M160 120 Q155 143 152 165"/><path d="M185 118 Q182 141 179 165"/><path d="M210 117 Q208 140 206 165"/>
+        <path d="M235 117 Q234 140 232 165"/><path d="M260 117 Q260 140 260 165"/><path d="M285 117 Q286 140 288 165"/>
+        <path d="M310 117 Q313 140 315 165"/><path d="M335 118 Q339 141 343 165"/><path d="M358 120 Q363 143 368 165"/>
+      </g>
+
+      <!-- ══ STEAMER BASKET 1 (top layer) ══ -->
+      <ellipse cx="250" cy="240" rx="135" ry="32" fill="#5a3010" stroke="#8a5820" stroke-width="2"/>
+      <path d="M115 240 Q115 294 250 308 Q385 294 385 240 Z" fill="#3d1e08" stroke="#8a5820" stroke-width="1.8"/>
+      <ellipse cx="250" cy="238" rx="125" ry="26" fill="#4a2808"/>
+      <!-- Weave pattern -->
+      <g stroke="#6a3808" stroke-width="1" opacity=".5">
+        <path d="M128 252 Q250 244 372 252"/><path d="M120 262 Q250 254 380 262"/>
+        <path d="M118 272 Q250 264 382 272"/><path d="M118 282 Q250 274 382 282"/>
+        <path d="M120 292 Q250 284 380 292"/>
+      </g>
+      <!-- Momos inside basket 1 -->
+      <g filter="url(#glow2)">
+        <!-- Row of momos -->
+        <ellipse cx="192" cy="260" rx="26" ry="14" fill="#fdf6e8" stroke="#e8d8b0" stroke-width="1.5"/>
+        <path d="M178 258 Q192 248 206 258" stroke="#d4b880" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M180 261 Q192 252 204 261" stroke="#d4b880" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".6"/>
+
+        <ellipse cx="250" cy="256" rx="26" ry="14" fill="#fdf6e8" stroke="#e8d8b0" stroke-width="1.5"/>
+        <path d="M236 254 Q250 244 264 254" stroke="#d4b880" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M238 257 Q250 248 262 257" stroke="#d4b880" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".6"/>
+
+        <ellipse cx="308" cy="260" rx="26" ry="14" fill="#fdf6e8" stroke="#e8d8b0" stroke-width="1.5"/>
+        <path d="M294 258 Q308 248 322 258" stroke="#d4b880" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M296 261 Q308 252 320 261" stroke="#d4b880" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".6"/>
+
+        <ellipse cx="220" cy="280" rx="24" ry="13" fill="#fdf6e8" stroke="#e8d8b0" stroke-width="1.4"/>
+        <path d="M208 278 Q220 269 232 278" stroke="#d4b880" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+
+        <ellipse cx="280" cy="278" rx="24" ry="13" fill="#fdf6e8" stroke="#e8d8b0" stroke-width="1.4"/>
+        <path d="M268 276 Q280 267 292 276" stroke="#d4b880" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      </g>
+      <!-- Basket 1 rim highlights -->
+      <ellipse cx="250" cy="240" rx="125" ry="22" fill="none" stroke="#c49040" stroke-width="1" opacity=".4"/>
+
+      <!-- ══ STEAMER BASKET 2 (bottom layer) ══ -->
+      <ellipse cx="250" cy="314" rx="138" ry="33" fill="#5a3010" stroke="#8a5820" stroke-width="2"/>
+      <path d="M112 314 Q112 372 250 388 Q388 372 388 314 Z" fill="#3d1e08" stroke="#8a5820" stroke-width="1.8"/>
+      <ellipse cx="250" cy="312" rx="128" ry="27" fill="#4a2808"/>
+      <!-- Weave pattern -->
+      <g stroke="#6a3808" stroke-width="1" opacity=".5">
+        <path d="M124 328 Q250 320 376 328"/><path d="M116 338 Q250 330 384 338"/>
+        <path d="M114 348 Q250 340 386 348"/><path d="M114 358 Q250 350 386 358"/>
+        <path d="M116 368 Q250 360 384 368"/>
+      </g>
+      <!-- Fried momos inside basket 2 (golden/darker) -->
+      <g filter="url(#glow2)">
+        <ellipse cx="192" cy="334" rx="26" ry="14" fill="#e8b060" stroke="#c88030" stroke-width="1.5"/>
+        <path d="M178 332 Q192 322 206 332" stroke="#a86020" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M180 335 Q192 326 204 335" stroke="#a86020" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".5"/>
+
+        <ellipse cx="250" cy="330" rx="26" ry="14" fill="#e8b060" stroke="#c88030" stroke-width="1.5"/>
+        <path d="M236 328 Q250 318 264 328" stroke="#a86020" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M238 331 Q250 322 262 331" stroke="#a86020" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".5"/>
+
+        <ellipse cx="308" cy="334" rx="26" ry="14" fill="#e8b060" stroke="#c88030" stroke-width="1.5"/>
+        <path d="M294 332 Q308 322 322 332" stroke="#a86020" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+        <ellipse cx="220" cy="352" rx="24" ry="13" fill="#e8b060" stroke="#c88030" stroke-width="1.4"/>
+        <path d="M208 350 Q220 341 232 350" stroke="#a86020" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <ellipse cx="280" cy="350" rx="24" ry="13" fill="#e8b060" stroke="#c88030" stroke-width="1.4"/>
+        <path d="M268 348 Q280 339 292 348" stroke="#a86020" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      </g>
+
+      <!-- ══ BASE PLATE ══ -->
+      <ellipse cx="250" cy="388" rx="155" ry="22" fill="#1a6b6b" stroke="#2a8a8a" stroke-width="2"/>
+      <ellipse cx="250" cy="385" rx="145" ry="18" fill="#0f4444" opacity=".9"/>
+      <path d="M95 388 Q95 408 250 416 Q405 408 405 388 Z" fill="#0f4444" stroke="#2a8a8a" stroke-width="1.5"/>
+      <!-- Plate rim detail -->
+      <ellipse cx="250" cy="388" rx="145" ry="16" fill="none" stroke="#2a8a8a" stroke-width="1" stroke-dasharray="6 8" opacity=".4"/>
+
+      <!-- Chutney bowl -->
+      <ellipse cx="420" cy="380" rx="36" ry="16" fill="#3d1e08" stroke="#8a5820" stroke-width="1.5"/>
+      <ellipse cx="420" cy="376" rx="28" ry="12" fill="#e8452a" opacity=".9"/>
+      <ellipse cx="420" cy="373" rx="20" ry="8"  fill="#ff6b4a" opacity=".7"/>
+      <ellipse cx="416" cy="371" rx="5" ry="3"   fill="rgba(255,255,255,.2)"/>
+
+      <!-- Small sauce bowl -->
+      <ellipse cx="84" cy="376" rx="30" ry="14" fill="#3d1e08" stroke="#8a5820" stroke-width="1.5"/>
+      <ellipse cx="84" cy="372" rx="22" ry="10" fill="#5a3a10" opacity=".9"/>
+      <ellipse cx="84" cy="369" rx="15" ry="7"  fill="#7a5020" opacity=".7"/>
+
+      <!-- Steam from lid -->
+      <path class="steam-path" d="M215 112 Q208 90 215 70" stroke="#1a6b6b" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".55" style="animation-delay:0s"/>
+      <path class="steam-path" d="M250 107 Q243 85 250 65" stroke="#1a6b6b" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".55" style="animation-delay:.6s"/>
+      <path class="steam-path" d="M285 112 Q292 90 285 70" stroke="#1a6b6b" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".5" style="animation-delay:1.2s"/>
+
+      <!-- Floating chilli & herb decorations -->
+      <g class="float" style="animation-delay:0s">
+        <ellipse cx="86" cy="175" rx="6" ry="14" fill="#e8452a" opacity=".75" transform="rotate(-35 86 175)"/>
+        <ellipse cx="86" cy="163" rx="4" ry="5"  fill="#2d5a27" opacity=".8" transform="rotate(-35 86 163)"/>
+      </g>
+      <g class="float" style="animation-delay:.8s">
+        <ellipse cx="416" cy="185" rx="5" ry="12" fill="#e8452a" opacity=".7" transform="rotate(28 416 185)"/>
+        <ellipse cx="416" cy="174" rx="3.5" ry="4.5" fill="#2d5a27" opacity=".75" transform="rotate(28 416 174)"/>
+      </g>
+      <g class="float" style="animation-delay:1.5s">
+        <ellipse cx="96" cy="440" rx="10" ry="5" fill="#2d5a27" opacity=".6" transform="rotate(-22 96 440)"/>
+        <ellipse cx="92" cy="436" rx="8" ry="4"  fill="#3a7a3a" opacity=".55" transform="rotate(-22 92 436)"/>
+      </g>
+
+      <!-- Sparkle decorations -->
+      <g filter="url(#glow1)">
+        <polygon points="72,100 74.5,109 84,109 76.5,114.5 79,123.5 72,118 65,123.5 67.5,114.5 60,109 69.5,109" fill="#e8452a" opacity=".55" class="wobble-it" style="transform-origin:72px 112px"/>
+        <polygon points="430,94 432,103 441,103 434,108 436.5,117 430,112 423.5,117 426,108 419,103 428,103" fill="#1a6b6b" opacity=".5" class="wobble-it" style="transform-origin:430px 106px;animation-delay:1s"/>
+        <polygon points="72,430 74,438 82,438 76,443 78,451 72,446 66,451 68,443 62,438 70,438" fill="#f5c842" opacity=".55" class="wobble-it" style="transform-origin:72px 441px;animation-delay:.5s"/>
+        <polygon points="432,438 434,446 442,446 436,451 438,459 432,454 426,459 428,451 422,446 430,446" fill="#e8452a" opacity=".5" class="wobble-it" style="transform-origin:432px 449px;animation-delay:1.5s"/>
+      </g>
+
+      <!-- Corner bracket decorations -->
+      <g stroke="#1a6b6b" stroke-width="2" opacity=".18">
+        <path d="M42,72 L42,50 L64,50"/>   <path d="M458,72 L458,50 L436,50"/>
+        <path d="M42,500 L42,522 L64,522"/> <path d="M458,500 L458,522 L436,522"/>
+      </g>
+
+      <!-- Bottom label -->
+      <text x="250" y="545" text-anchor="middle" font-family="Righteous,sans-serif" font-size="11" fill="#1a6b6b" opacity=".3" letter-spacing="7">AUNTY MOMO · LAJPAT NAGAR</text>
+      <line x1="78"  y1="540" x2="184" y2="540" stroke="#1a6b6b" stroke-width=".8" opacity=".2"/>
+      <line x1="316" y1="540" x2="422" y2="540" stroke="#1a6b6b" stroke-width=".8" opacity=".2"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ══ TICKER ══ -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span>Steamed Chicken Momos</span><span class="sep">🥟</span>
+    <span>Fried Paneer Momos</span><span class="sep">🥟</span>
+    <span>Tandoori Momos</span><span class="sep">🥟</span>
+    <span>Jhol Momo</span><span class="sep">🥟</span>
+    <span>Veg Corn Momos</span><span class="sep">🥟</span>
+    <span>Cheese Momos</span><span class="sep">🥟</span>
+    <span>Chilli Garlic Momos</span><span class="sep">🥟</span>
+    <span>Thukpa Soup</span><span class="sep">🥟</span>
+    <span>Steamed Chicken Momos</span><span class="sep">🥟</span>
+    <span>Fried Paneer Momos</span><span class="sep">🥟</span>
+    <span>Tandoori Momos</span><span class="sep">🥟</span>
+    <span>Jhol Momo</span><span class="sep">🥟</span>
+    <span>Veg Corn Momos</span><span class="sep">🥟</span>
+    <span>Cheese Momos</span><span class="sep">🥟</span>
+    <span>Chilli Garlic Momos</span><span class="sep">🥟</span>
+    <span>Thukpa Soup</span><span class="sep">🥟</span>
+  </div>
+</div>
+
+<!-- ══ MENU ══ -->
+<section class="menu-sec" id="menu">
+  <span class="sec-label reveal">🥟 What We Make</span>
+  <h2 class="sec-title reveal" style="animation-delay:.1s">THE <em>MENU</em></h2>
+  <p class="sec-sub reveal" style="animation-delay:.2s">All momos handcrafted fresh daily. Pick your filling, pick your style — we'll do the rest.</p>
+
+  <div class="menu-grid">
+
+    <!-- Steamed Chicken -->
+    <div class="mcard reveal" style="animation-delay:.05s">
+      <div class="mcard-art" style="background:#e8f4f0">
+        <svg viewBox="0 0 280 188" class="card-svg">
+          <ellipse cx="140" cy="120" rx="115" ry="55" fill="#d0ede8" opacity=".8"/>
+          <ellipse cx="140" cy="115" rx="100" ry="46" fill="#e8f8f4" opacity=".9"/>
+          <!-- Steamer basket suggestion -->
+          <ellipse cx="140" cy="118" rx="90" ry="36" fill="none" stroke="#8a5820" stroke-width="1.2" stroke-dasharray="5 7" opacity=".3"/>
+          <!-- 6 momos in circle -->
+          <g fill="#fdf6e8" stroke="#d4c8a8" stroke-width="1.4">
+            <ellipse cx="106" cy="108" rx="22" ry="12" transform="rotate(-15 106 108)"/>
+            <ellipse cx="140" cy="100" rx="22" ry="12"/>
+            <ellipse cx="174" cy="108" rx="22" ry="12" transform="rotate(15 174 108)"/>
+            <ellipse cx="116" cy="130" rx="22" ry="12" transform="rotate(10 116 130)"/>
+            <ellipse cx="162" cy="130" rx="22" ry="12" transform="rotate(-10 162 130)"/>
+            <ellipse cx="140" cy="140" rx="20" ry="11"/>
+          </g>
+          <!-- Momo pleats -->
+          <g stroke="#b8a880" stroke-width="1.2" fill="none" stroke-linecap="round">
+            <path d="M97 105 Q106 96 115 105"/> <path d="M131 97 Q140 88 149 97"/>
+            <path d="M165 105 Q174 96 183 105"/> <path d="M107 127 Q116 118 125 127"/>
+            <path d="M153 127 Q162 118 171 127"/> <path d="M131 137 Q140 128 149 137"/>
+          </g>
+          <!-- Steam -->
+          <path d="M120 84 Q114 72 120 60" stroke="#1a6b6b" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".4" style="animation:steam 2.2s ease-in-out infinite"/>
+          <path d="M140 78 Q134 66 140 54" stroke="#1a6b6b" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".4" style="animation:steam 2.8s ease-in-out .5s infinite"/>
+          <path d="M160 84 Q166 72 160 60" stroke="#1a6b6b" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".4" style="animation:steam 2.5s ease-in-out 1s infinite"/>
+        </svg>
+        <span class="card-emoji">🥟</span>
+      </div>
+      <div class="mcard-body">
+        <div class="mcard-name">Steamed Chicken Momos</div>
+        <div class="mcard-desc">Juicy minced chicken, ginger, garlic & spring onion wrapped in thin dough. Served with our secret red chutney.</div>
+        <div class="mcard-footer"><span class="mcard-price">120</span><span class="mcard-tag tag-hit">🔥 #1 Best Seller</span></div>
+      </div>
+    </div>
+
+    <!-- Fried Paneer -->
+    <div class="mcard reveal" style="animation-delay:.1s">
+      <div class="mcard-art" style="background:#fef4e8">
+        <svg viewBox="0 0 280 188" class="card-svg">
+          <ellipse cx="140" cy="120" rx="115" ry="55" fill="#fde8c8" opacity=".8"/>
+          <ellipse cx="140" cy="115" rx="100" ry="46" fill="#fff4e0" opacity=".9"/>
+          <g fill="#e8b060" stroke="#b87830" stroke-width="1.4">
+            <ellipse cx="106" cy="108" rx="22" ry="12" transform="rotate(-15 106 108)"/>
+            <ellipse cx="140" cy="100" rx="22" ry="12"/>
+            <ellipse cx="174" cy="108" rx="22" ry="12" transform="rotate(15 174 108)"/>
+            <ellipse cx="116" cy="130" rx="22" ry="12" transform="rotate(10 116 130)"/>
+            <ellipse cx="162" cy="130" rx="22" ry="12" transform="rotate(-10 162 130)"/>
+            <ellipse cx="140" cy="140" rx="20" ry="11"/>
+          </g>
+          <g stroke="#8a5020" stroke-width="1.2" fill="none" stroke-linecap="round">
+            <path d="M97 105 Q106 96 115 105"/> <path d="M131 97 Q140 88 149 97"/>
+            <path d="M165 105 Q174 96 183 105"/> <path d="M107 127 Q116 118 125 127"/>
+            <path d="M153 127 Q162 118 171 127"/> <path d="M131 137 Q140 128 149 137"/>
+          </g>
+          <!-- Oil sizzle dots -->
+          <g fill="#f0c870" opacity=".5">
+            <circle cx="88"  cy="140" r="3"/> <circle cx="95"  cy="155" r="2"/>
+            <circle cx="192" cy="140" r="3"/> <circle cx="184" cy="155" r="2"/>
+          </g>
+        </svg>
+        <span class="card-emoji">✨</span>
+      </div>
+      <div class="mcard-body">
+        <div class="mcard-name">Fried Paneer Momos</div>
+        <div class="mcard-desc">Crispy golden-fried momos stuffed with spiced cottage cheese, bell pepper & herbs. Crunchy outside, soft inside.</div>
+        <div class="mcard-footer"><span class="mcard-price">130</span><span class="mcard-tag tag-veg">🌱 Veg</span></div>
+      </div>
+    </div>
+
+    <!-- Tandoori Momos -->
+    <div class="mcard reveal" style="animation-delay:.15s">
+      <div class="mcard-art" style="background:#fdeee8">
+        <svg viewBox="0 0 280 188" class="card-svg">
+          <ellipse cx="140" cy="120" rx="115" ry="55" fill="#fcd8c8" opacity=".8"/>
+          <ellipse cx="140" cy="115" rx="100" ry="46" fill="#fde8dc" opacity=".9"/>
+          <!-- Skewer -->
+          <line x1="80" y1="155" x2="200" y2="75" stroke="#8a5820" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+          <line x1="90" y1="163" x2="210" y2="83" stroke="#8a5820" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+          <!-- Momos on skewer — coral/red-charred -->
+          <g fill="#e8604a" stroke="#c83830" stroke-width="1.4">
+            <ellipse cx="110" cy="140" rx="22" ry="12" transform="rotate(-35 110 140)"/>
+            <ellipse cx="136" cy="120" rx="22" ry="12" transform="rotate(-35 136 120)"/>
+            <ellipse cx="162" cy="100" rx="22" ry="12" transform="rotate(-35 162 100)"/>
+          </g>
+          <!-- Char marks -->
+          <g stroke="#8a2010" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".5">
+            <path d="M102 137 Q110 132 118 137"/><path d="M128 117 Q136 112 144 117"/>
+            <path d="M154 97 Q162 92 170 97"/>
+          </g>
+          <!-- Garnish -->
+          <ellipse cx="86" cy="115" rx="9" ry="4.5" fill="#2d5a27" opacity=".8" transform="rotate(-28 86 115)"/>
+          <ellipse cx="195" cy="165" rx="8" ry="4" fill="#2d5a27" opacity=".75" transform="rotate(22 195 165)"/>
+          <!-- Char glow -->
+          <circle cx="162" cy="100" r="18" fill="#e8452a" opacity=".1" filter="url(#glow2)"/>
+        </svg>
+        <span class="card-emoji">🔥</span>
+      </div>
+      <div class="mcard-body">
+        <div class="mcard-name">Tandoori Momos</div>
+        <div class="mcard-desc">Marinated in tikka spices and finished in the tandoor. Charred, smoky, and absolutely addictive.</div>
+        <div class="mcard-footer"><span class="mcard-price">150</span><span class="mcard-tag tag-spicy">🌶 Spicy</span></div>
+      </div>
+    </div>
+
+    <!-- Jhol Momo -->
+    <div class="mcard reveal" style="animation-delay:.2s">
+      <div class="mcard-art" style="background:#fdf0e8">
+        <svg viewBox="0 0 280 188" class="card-svg">
+          <ellipse cx="140" cy="120" rx="115" ry="58" fill="#f8e0c8" opacity=".8"/>
+          <!-- Bowl shape -->
+          <path d="M72 105 Q72 158 140 165 Q208 158 208 105 Z" fill="#e8b878" opacity=".4"/>
+          <ellipse cx="140" cy="108" rx="70" ry="18" fill="#e8b878" opacity=".7"/>
+          <!-- Jhol broth -->
+          <path d="M75 108 Q75 158 140 165 Q205 158 205 108 Z" fill="#d47830" opacity=".35"/>
+          <ellipse cx="140" cy="108" rx="65" ry="16" fill="#e89040" opacity=".5"/>
+          <!-- Momos floating in soup -->
+          <g fill="#fdf6e8" stroke="#d4c8a8" stroke-width="1.3">
+            <ellipse cx="110" cy="118" rx="20" ry="11" transform="rotate(-10 110 118)"/>
+            <ellipse cx="148" cy="112" rx="20" ry="11"/>
+            <ellipse cx="185" cy="120" rx="18" ry="10" transform="rotate(12 185 120)"/>
+            <ellipse cx="128" cy="138" rx="19" ry="10" transform="rotate(8 128 138)"/>
+            <ellipse cx="165" cy="140" rx="19" ry="10" transform="rotate(-8 165 140)"/>
+          </g>
+          <g stroke="#b8a880" stroke-width="1.1" fill="none" stroke-linecap="round">
+            <path d="M102 115 Q110 107 118 115"/> <path d="M140 109 Q148 101 156 109"/>
+            <path d="M178 117 Q185 109 192 117"/> <path d="M120 135 Q128 127 136 135"/>
+            <path d="M157 137 Q165 129 173 137"/>
+          </g>
+          <!-- Broth ripples -->
+          <ellipse cx="140" cy="108" rx="65" ry="16" fill="none" stroke="#e89040" stroke-width="1" stroke-dasharray="5 6" opacity=".4"/>
+          <ellipse cx="140" cy="108" rx="50" ry="12" fill="none" stroke="#e89040" stroke-width=".8" stroke-dasharray="4 7" opacity=".3"/>
+        </svg>
+        <span class="card-emoji">🍲</span>
+      </div>
+      <div class="mcard-body">
+        <div class="mcard-name">Jhol Momo</div>
+        <div class="mcard-desc">Steamed momos swimming in a fiery, tangy Nepali tomato broth with sesame, ginger and red chilli. Soul food.</div>
+        <div class="mcard-footer"><span class="mcard-price">140</span><span class="mcard-tag tag-new">⭐ Fan Fav</span></div>
+      </div>
+    </div>
+
+    <!-- Veg Cheese Momos -->
+    <div class="mcard reveal" style="animation-delay:.25s">
+      <div class="mcard-art" style="background:#f0f8ee">
+        <svg viewBox="0 0 280 188" class="card-svg">
+          <ellipse cx="140" cy="120" rx="115" ry="55" fill="#d8f0d4" opacity=".8"/>
+          <ellipse cx="140" cy="115" rx="100" ry="46" fill="#eaf8e6" opacity=".9"/>
+          <g fill="#fdf6e8" stroke="#d4c8a8" stroke-width="1.4">
+            <ellipse cx="106" cy="108" rx="22" ry="12" transform="rotate(-15 106 108)"/>
+            <ellipse cx="140" cy="100" rx="22" ry="12"/>
+            <ellipse cx="174" cy="108" rx="22" ry="12" transform="rotate(15 174 108)"/>
+            <ellipse cx="116" cy="130" rx="22" ry="12" transform="rotate(10 116 130)"/>
+            <ellipse cx="162" cy="130" rx="22" ry="12" transform="rotate(-10 162 130)"/>
+            <ellipse cx="140" cy="140" rx="20" ry="11"/>
+          </g>
+          <!-- Cheese ooze -->
+          <g fill="#f5e642" stroke="#c8b810" stroke-width=".8" opacity=".7">
+            <path d="M102 112 Q106 107 110 112 L110 117 Q106 115 102 117 Z"/>
+            <path d="M136 104 Q140 99 144 104 L144 109 Q140 107 136 109 Z"/>
+            <path d="M170 112 Q174 107 178 112 L178 117 Q174 115 170 117 Z"/>
+          </g>
+          <g stroke="#b8a880" stroke-width="1.2" fill="none" stroke-linecap="round">
+            <path d="M97 105 Q106 96 115 105"/> <path d="M131 97 Q140 88 149 97"/>
+            <path d="M165 105 Q174 96 183 105"/>
+          </g>
+          <!-- Herbs on top -->
+          <ellipse cx="88"  cy="92" rx="7" ry="3.5" fill="#2d5a27" opacity=".85" transform="rotate(-25 88 92)"/>
+          <ellipse cx="194" cy="95" rx="6" ry="3"   fill="#2d5a27" opacity=".8"  transform="rotate(20 194 95)"/>
+        </svg>
+        <span class="card-emoji">🧀</span>
+      </div>
+      <div class="mcard-body">
+        <div class="mcard-name">Veg Cheese Momos</div>
+        <div class="mcard-desc">Mixed vegetables with gooey melted cheese filling, herbs and a hint of pepper. Kids go absolutely crazy for these.</div>
+        <div class="mcard-footer"><span class="mcard-price">130</span><span class="mcard-tag tag-veg">🌱 Veg</span></div>
+      </div>
+    </div>
+
+    <!-- Thukpa -->
+    <div class="mcard reveal" style="animation-delay:.3s">
+      <div class="mcard-art" style="background:#e8f0f8">
+        <svg viewBox="0 0 280 188" class="card-svg">
+          <ellipse cx="140" cy="118" rx="112" ry="56" fill="#d0e4f4" opacity=".8"/>
+          <!-- Bowl -->
+          <path d="M72 105 Q72 162 140 170 Q208 162 208 105 Z" fill="#5a8ab0" opacity=".25"/>
+          <ellipse cx="140" cy="108" rx="70" ry="18" fill="#5a8ab0" opacity=".5"/>
+          <!-- Broth -->
+          <path d="M75 108 Q75 162 140 169 Q205 162 205 108 Z" fill="#3a6a8a" opacity=".25"/>
+          <!-- Noodles -->
+          <g stroke="#f0e0b0" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".8">
+            <path d="M88 120 Q105 112 122 120 Q139 128 156 120 Q173 112 190 120"/>
+            <path d="M86 132 Q103 124 120 132 Q137 140 154 132 Q171 124 188 132"/>
+            <path d="M90 144 Q107 136 124 144 Q141 152 158 144 Q175 136 192 144"/>
+          </g>
+          <!-- Veggies -->
+          <circle cx="108" cy="116" r="6" fill="#2d5a27" opacity=".8"/>
+          <circle cx="170" cy="114" r="5" fill="#e8452a" opacity=".7"/>
+          <circle cx="140" cy="126" r="6" fill="#e8b060" opacity=".75"/>
+          <circle cx="125" cy="138" r="5" fill="#2d5a27" opacity=".7"/>
+          <circle cx="158" cy="140" r="5" fill="#e8452a" opacity=".65"/>
+          <!-- Steam -->
+          <path d="M130 88 Q124 75 130 62" stroke="#1a6b6b" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".4" style="animation:steam 2.5s ease-in-out infinite"/>
+          <path d="M152 84 Q158 71 152 58" stroke="#1a6b6b" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".4" style="animation:steam 3s ease-in-out .7s infinite"/>
+        </svg>
+        <span class="card-emoji">🍜</span>
+      </div>
+      <div class="mcard-body">
+        <div class="mcard-name">Thukpa Soup</div>
+        <div class="mcard-desc">Tibetan noodle soup with fresh vegetables, aromatic broth and your choice of chicken or veg. The perfect winter bowl.</div>
+        <div class="mcard-footer"><span class="mcard-price">160</span><span class="mcard-tag tag-new">✨ New</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ WAVE DIVIDER ══ -->
+<div class="wave-divider">
+  <span class="dline"></span>
+  🥟 &nbsp; made fresh, served hot &nbsp; 🥟
+  <span class="dline r"></span>
+</div>
+
+<!-- ══ ABOUT ══ -->
+<section class="about-sec" id="about">
+  <div class="about-bg-text">MOMO</div>
+  <div class="about-inner">
+
+    <div class="about-left reveal">
+      <div class="about-num">AUNTY<br/><span style="font-size:.45em;color:var(--coral)">MOMO</span></div>
+      <div class="about-label">Main Market · Amar Colony · Lajpat Nagar, New Delhi</div>
+      <!-- Steamer stack illustration -->
+      <svg class="steamer-art" viewBox="0 0 280 360" fill="none">
+        <defs>
+          <radialGradient id="ag1" cx="50%" cy="50%" r="55%"><stop offset="0%" stop-color="#1a6b6b" stop-opacity=".18"/><stop offset="100%" stop-color="#1a6b6b" stop-opacity="0"/></radialGradient>
+          <filter id="af"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <circle cx="140" cy="180" r="128" fill="url(#ag1)"/>
+        <circle cx="140" cy="180" r="122" stroke="#2a8a8a" stroke-width="1" stroke-dasharray="8 16" opacity=".18" style="animation:spinSlow 30s linear infinite;transform-origin:140px 180px"/>
+        <!-- Mini steamer (2 layers) -->
+        <!-- Lid -->
+        <ellipse cx="140" cy="68" rx="68" ry="15" fill="#5a3010" stroke="#8a5820" stroke-width="1.5"/>
+        <path d="M72 68 Q72 48 140 42 Q208 48 208 68" fill="#c49040" opacity=".6" stroke="#8a5820" stroke-width="1.5"/>
+        <ellipse cx="140" cy="42" rx="12" ry="5" fill="#8a5820" stroke="#c49040" stroke-width="1"/>
+        <!-- Lid lines -->
+        <g stroke="#6a3808" stroke-width=".9" opacity=".4">
+          <path d="M84 56 Q140 50 196 56"/><path d="M80 62 Q140 56 200 62"/>
+        </g>
+        <!-- Basket 1 -->
+        <ellipse cx="140" cy="120" rx="72" ry="17" fill="#5a3010" stroke="#8a5820" stroke-width="1.5"/>
+        <path d="M68 120 Q68 155 140 162 Q212 155 212 120 Z" fill="#3d1e08" stroke="#8a5820" stroke-width="1.5"/>
+        <ellipse cx="140" cy="118" rx="62" ry="13" fill="#4a2808"/>
+        <g stroke="#6a3808" stroke-width=".9" opacity=".45">
+          <path d="M76 130 Q140 124 204 130"/><path d="M72 140 Q140 134 208 140"/><path d="M70 150 Q140 144 210 150"/>
+        </g>
+        <!-- 3 momos in basket 1 -->
+        <g fill="#fdf6e8" stroke="#d4c8a8" stroke-width="1.2">
+          <ellipse cx="110" cy="134" rx="18" ry="10" transform="rotate(-10 110 134)"/>
+          <ellipse cx="140" cy="128" rx="18" ry="10"/>
+          <ellipse cx="170" cy="134" rx="18" ry="10" transform="rotate(10 170 134)"/>
+        </g>
+        <g stroke="#b8a880" stroke-width="1" fill="none" stroke-linecap="round">
+          <path d="M103 131 Q110 123 117 131"/>
+          <path d="M133 125 Q140 117 147 125"/>
+          <path d="M163 131 Q170 123 177 131"/>
+        </g>
+        <!-- Basket 2 -->
+        <ellipse cx="140" cy="178" rx="76" ry="18" fill="#5a3010" stroke="#8a5820" stroke-width="1.5"/>
+        <path d="M64 178 Q64 218 140 228 Q216 218 216 178 Z" fill="#3d1e08" stroke="#8a5820" stroke-width="1.5"/>
+        <ellipse cx="140" cy="176" rx="66" ry="14" fill="#4a2808"/>
+        <g stroke="#6a3808" stroke-width=".9" opacity=".45">
+          <path d="M72 190 Q140 184 208 190"/><path d="M68 200 Q140 194 212 200"/><path d="M66 210 Q140 204 214 210"/>
+        </g>
+        <!-- 3 golden fried momos in basket 2 -->
+        <g fill="#e8b060" stroke="#b87830" stroke-width="1.2">
+          <ellipse cx="110" cy="192" rx="18" ry="10" transform="rotate(-10 110 192)"/>
+          <ellipse cx="140" cy="186" rx="18" ry="10"/>
+          <ellipse cx="170" cy="192" rx="18" ry="10" transform="rotate(10 170 192)"/>
+        </g>
+        <g stroke="#8a5020" stroke-width="1" fill="none" stroke-linecap="round">
+          <path d="M103 189 Q110 181 117 189"/>
+          <path d="M133 183 Q140 175 147 183"/>
+          <path d="M163 189 Q170 181 177 189"/>
+        </g>
+        <!-- Base plate -->
+        <ellipse cx="140" cy="228" rx="82" ry="13" fill="#1a6b6b" stroke="#2a8a8a" stroke-width="1.5"/>
+        <path d="M58 228 Q58 244 140 250 Q222 244 222 228 Z" fill="#0f4444" stroke="#2a8a8a" stroke-width="1.2"/>
+        <!-- Steam from lid -->
+        <path d="M124 38 Q118 22 124 8"  stroke="#2a8a8a" stroke-width="1.4" fill="none" stroke-linecap="round" opacity=".5" style="animation:steam 2.3s ease-in-out infinite"/>
+        <path d="M140 34 Q134 18 140 4"  stroke="#2a8a8a" stroke-width="1.4" fill="none" stroke-linecap="round" opacity=".5" style="animation:steam 2.9s ease-in-out .55s infinite"/>
+        <path d="M156 38 Q162 22 156 8"  stroke="#2a8a8a" stroke-width="1.4" fill="none" stroke-linecap="round" opacity=".45" style="animation:steam 2.6s ease-in-out 1.1s infinite"/>
+        <!-- Chutney bowl -->
+        <ellipse cx="224" cy="282" rx="26" ry="10" fill="#3d1e08" stroke="#8a5820" stroke-width="1.2"/>
+        <ellipse cx="224" cy="278" rx="20" ry="8"  fill="#e8452a" opacity=".85"/>
+        <ellipse cx="224" cy="275" rx="13" ry="5"  fill="#ff6b4a" opacity=".6"/>
+        <!-- Chilli decorations -->
+        <ellipse cx="55"  cy="170" rx="5" ry="12" fill="#e8452a" opacity=".6" transform="rotate(-30 55 170)"/>
+        <ellipse cx="225" cy="165" rx="5" ry="11" fill="#e8452a" opacity=".55" transform="rotate(25 225 165)"/>
+        <!-- Sparkles -->
+        <g fill="#f5c842" opacity=".5">
+          <polygon points="38,110 40,118 48,118 42,123 44,131 38,126 32,131 34,123 28,118 36,118" style="animation:wiggle 3s ease-in-out infinite;transform-origin:38px 120px"/>
+          <polygon points="242,108 244,116 252,116 246,121 248,129 242,124 236,129 238,121 232,116 240,116" style="animation:wiggle 3.5s ease-in-out .8s infinite;transform-origin:242px 118px"/>
+        </g>
+        <text x="140" y="350" text-anchor="middle" font-family="Righteous,sans-serif" font-size="10" fill="#2a8a8a" opacity=".3" letter-spacing="5">AUNTY MOMO</text>
+      </svg>
+    </div>
+
+    <div class="about-right reveal" style="animation-delay:.2s">
+      <span class="sec-label" style="color:var(--yellow)">Our Story</span>
+      <h2 class="sec-title" style="color:var(--cream);margin-bottom:1.4rem">MADE WITH<br/><em style="color:var(--yellow)">LOVE,</em><br/><span style="color:var(--cream)">SERVED</span><br/><em style="color:var(--coral)">HOT.</em></h2>
+      <p class="about-text">Aunty Momo started as a small stall in the heart of Amar Colony with one bamboo steamer and a recipe that came straight from home. The momos were so good, the queue never went away.</p>
+      <p class="about-text">Today we still make every single momo by hand, wrap every fold ourselves, and use the same chutney recipe that made aunty famous. No freezers, no shortcuts — just fresh dough, good filling and lots of steam.</p>
+      <div class="pills">
+        <span class="pill">100% Handmade</span>
+        <span class="pill">Fresh Daily</span>
+        <span class="pill">Dine In</span>
+        <span class="pill">Takeaway</span>
+        <span class="pill">WhatsApp Orders</span>
+        <span class="pill">Opens 11 AM</span>
+      </div>
+      <div class="about-btns">
+        <a href="https://wa.me/918527788210?text=Hi%20Aunty!%20I%20would%20like%20to%20place%20a%20momo%20order%20please%20%F0%9F%A5%9F" target="_blank" rel="noopener" class="btn btn-wa">
+          <svg class="btn-ico" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Order Now
+        </a>
+        <a href="tel:+918527788210" class="btn btn-outline" style="border-color:rgba(253,246,232,.35);color:var(--cream-d)">
+          <svg class="btn-ico" style="fill:var(--cream-d)" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          Call Us
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ CTA / CONTACT ══ -->
+<section class="cta-sec" id="contact">
+  <div class="cta-inner">
+    <h2 class="cta-title reveal">HUNGRY<br/>FOR<br/>MOMOS?</h2>
+    <p class="cta-sub reveal" style="animation-delay:.12s">WhatsApp your order or give aunty a call. Fresh batch ready in minutes! 🥟</p>
+    <div class="cta-btns reveal" style="animation-delay:.24s">
+      <a href="https://wa.me/918527788210?text=Hi%20Aunty!%20I%20would%20like%20to%20place%20a%20momo%20order%20please%20%F0%9F%A5%9F" target="_blank" rel="noopener" class="btn btn-teal">
+        <svg class="btn-ico" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Order
+      </a>
+      <a href="tel:+918527788210" class="btn btn-outline-w">
+        <svg class="btn-ico btn-ico--dark" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        +91 85277 88210
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <div class="foot-logo">Aunty Momo 🥟</div>
+      <p class="foot-tagline">Handmade momos, big love.<br/>Amar Colony, Lajpat Nagar, New Delhi.</p>
+    </div>
+    <div class="foot-cols">
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <p>+91 85277 88210</p>
+        <a href="https://wa.me/918527788210" target="_blank">WhatsApp Us</a>
+      </div>
+      <div class="foot-col">
+        <h4>Find Us</h4>
+        <p>Main Market, Block C</p>
+        <p>Amar Colony, Lajpat Nagar</p>
+        <p>New Delhi, Delhi 110024</p>
+        <p class="foot-hours">Closed · Opens 11 AM</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Aunty Momo. All rights reserved.</span>
+    <span>Deployed on Cloudflare Pages ⚡</span>
+  </div>
+</footer>
+
+<!-- ══ MOBILE FAB ══ -->
+<div class="fab" id="fab">
+  <a href="https://wa.me/918527788210?text=Hi%20Aunty!%20I%20would%20like%20to%20place%20a%20momo%20order%20please%20%F0%9F%A5%9F" target="_blank" rel="noopener" class="btn btn-wa btn-fab">
+    <svg class="btn-ico" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp
+  </a>
+  <a href="tel:+918527788210" class="btn btn-coral btn-fab">
+    <svg class="btn-ico" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    Call Now
+  </a>
+</div>
+
+<script>
+'use strict';
+/* ── Sticky nav ── */
+(function(){
+  var nav=document.getElementById('nav');
+  if(!nav)return;
+  var t=false;
+  window.addEventListener('scroll',function(){
+    if(!t){requestAnimationFrame(function(){nav.classList.toggle('stuck',window.scrollY>60);t=false;});t=true;}
+  },{passive:true});
+})();
+/* ── Hamburger ── */
+(function(){
+  var ham=document.getElementById('ham'),menu=document.getElementById('mob-menu');
+  if(!ham||!menu)return;
+  var open=false;
+  function toggle(s){open=(s!==undefined)?s:!open;ham.classList.toggle('open',open);menu.classList.toggle('open',open);document.body.style.overflow=open?'hidden':'';}
+  ham.addEventListener('click',function(){toggle();});
+  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){toggle(false);});});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&open)toggle(false);});
+})();
+/* ── Smooth scroll ── */
+(function(){
+  document.querySelectorAll('a[href^="#"]').forEach(function(l){
+    l.addEventListener('click',function(e){
+      var t=document.getElementById(l.getAttribute('href').slice(1));
+      if(!t)return;e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  });
+})();
+/* ── Ticker pause ── */
+(function(){
+  var w=document.querySelector('.ticker-wrap'),tr=document.querySelector('.ticker-track');
+  if(!w||!tr)return;
+  w.addEventListener('mouseenter',function(){tr.style.animationPlayState='paused';});
+  w.addEventListener('mouseleave',function(){tr.style.animationPlayState='running';});
+})();
+</script>
+</body>
+</html>

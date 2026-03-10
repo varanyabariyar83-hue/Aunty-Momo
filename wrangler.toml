@@ -1,0 +1,18 @@
+# ══════════════════════════════════════════
+# Aunty Momo — wrangler.toml
+# Cloudflare Pages configuration
+# ══════════════════════════════════════════
+
+name               = "aunty-momo"
+compatibility_date = "2024-01-01"
+
+# Deploy settings in Cloudflare Dashboard:
+#   Framework preset : None
+#   Build command    : (leave empty)
+#   Build output dir : (leave empty)
+#
+# Deploy via CLI:
+#   wrangler pages deploy . --project-name aunty-momo
+#
+# Optional order webhook:
+#   wrangler pages secret put ORDER_WEBHOOK_URL
